@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Onlinea</title>
+  <script src="Tienda%20Online_archivos/3.4.17"></script>
+  <script src="Tienda%20Online_archivos/element_sdk.js"></script>
+  <link rel="stylesheet" href="Estilo.css">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        .cart-item-enter {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="Tienda%20Online_archivos/data_sdk.js" type="text/javascript"></script>
+	</head>
+ <body class="h-full bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
+  <div class="min-h-full"><!-- Header -->
+   <header class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center py-6">
+      <h1 id="store-title" class="text-3xl font-bold text-gray-900">Mi Tienda Online</h1><button id="cart-toggle" class="relative bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"> 🛒 Carrito (<span id="cart-count">0</span>) </button>
+     </div>
+    </div>
+   </header>
+   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Products Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"><!-- Yerba -->
+     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div class="p-6">
+       <div class="text-4xl mb-4 text-center">
+        🧉
+       </div>
+       <h3 class="text-xl font-semibold text-gray-900 mb-2">Yerba Mate</h3>
+       <p class="text-gray-600 mb-4">1kg</p>
+       <div class="flex justify-between items-center"><span class="text-2xl font-bold text-indigo-600">$4500</span>
+        <div class="flex items-center space-x-2"><button onclick="updateProductQuantity('Yerba Mate 1kg', 4500, -1)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 transition-colors text-sm">-</button> <span id="qty-Yerba Mate 1kg" class="font-semibold min-w-[20px] text-center">0</span> <button onclick="updateProductQuantity('Yerba Mate 1kg', 4500, 1)" class="bg-green-500 text-white w-8 h-8 rounded-full hover:bg-green-600 transition-colors text-sm">+</button>
+        </div>
+       </div>
+      </div>
+     </div><!-- Azúcar -->
+     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div class="p-6">
+       <div class="text-4xl mb-4 text-center">
+        🍯
+       </div>
+       <h3 class="text-xl font-semibold text-gray-900 mb-2">Azúcar</h3>
+       <p class="text-gray-600 mb-4">1kg</p>
+       <div class="flex justify-between items-center"><span class="text-2xl font-bold text-indigo-600">$1500</span>
+        <div class="flex items-center space-x-2"><button onclick="updateProductQuantity('Azúcar 1kg', 1500, -1)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 transition-colors text-sm">-</button> <span id="qty-Azúcar 1kg" class="font-semibold min-w-[20px] text-center">0</span> <button onclick="updateProductQuantity('Azúcar 1kg', 1500, 1)" class="bg-green-500 text-white w-8 h-8 rounded-full hover:bg-green-600 transition-colors text-sm">+</button>
+        </div>
+       </div>
+      </div>
+     </div><!-- Galletitas -->
+     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div class="p-6">
+       <div class="text-4xl mb-4 text-center">
+        🍪
+       </div>
+       <h3 class="text-xl font-semibold text-gray-900 mb-2">Galletitas Dulces</h3>
+       <p class="text-gray-600 mb-4">Paquete</p>
+       <div class="flex justify-between items-center"><span class="text-2xl font-bold text-indigo-600">$1500</span>
+        <div class="flex items-center space-x-2"><button onclick="updateProductQuantity('Galletitas Dulces', 1500, -1)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 transition-colors text-sm">-</button> <span id="qty-Galletitas Dulces" class="font-semibold min-w-[20px] text-center">0</span> <button onclick="updateProductQuantity('Galletitas Dulces', 1500, 1)" class="bg-green-500 text-white w-8 h-8 rounded-full hover:bg-green-600 transition-colors text-sm">+</button>
+        </div>
+       </div>
+      </div>
+     </div><!-- Coca Cola -->
+     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div class="p-6">
+       <div class="text-4xl mb-4 text-center">
+        🥤
+       </div>
+       <h3 class="text-xl font-semibold text-gray-900 mb-2">Coca Cola</h3>
+       <p class="text-gray-600 mb-4">Botella</p>
+       <div class="flex justify-between items-center"><span class="text-2xl font-bold text-indigo-600">$2500</span>
+        <div class="flex items-center space-x-2"><button onclick="updateProductQuantity('Coca Cola', 2500, -1)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 transition-colors text-sm">-</button> <span id="qty-Coca Cola" class="font-semibold min-w-[20px] text-center">0</span> <button onclick="updateProductQuantity('Coca Cola', 2500, 1)" class="bg-green-500 text-white w-8 h-8 rounded-full hover:bg-green-600 transition-colors text-sm">+</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Cart Panel -->
+    <div id="cart-panel" class="hidden bg-white rounded-xl shadow-lg p-6">
+     <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-900">Carrito de Compras</h2><button id="close-cart" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+     </div>
+     <div id="cart-items" class="space-y-4 mb-6">
+      <p class="text-gray-500 text-center py-8">Tu carrito está vacío</p>
+     </div>
+     <div id="cart-total" class="border-t pt-4 mb-6">
+      <div class="flex justify-between items-center text-xl font-bold"><span>Total:</span> <span id="total-amount">$0</span>
+      </div>
+     </div><!-- Customer Information Form -->
+     <div id="customer-form" class="border-t pt-6 mb-6">
+      <h3 class="text-lg font-semibold mb-4 text-gray-900">Información de Entrega</h3>
+      <div class="space-y-4">
+       <div><label for="customer-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label> <input type="text" id="customer-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ingresa tu nombre completo">
+       </div>
+       <div><label for="customer-address" class="block text-sm font-medium text-gray-700 mb-1">Dirección de entrega</label> <textarea id="customer-address" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ingresa tu dirección completa (calle, número, barrio, ciudad)"></textarea>
+       </div>
+      </div>
+     </div><button id="send-order" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors text-lg font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed" disabled="disabled"> 📱 Enviar Pedido por WhatsApp </button>
+    </div>
+   </main>
+  </div>
+  <script>
+        // Configuration
+        const defaultConfig = {
+            store_title: "Mi Tienda Online",
+            whatsapp_number: "3777731026"
+        };
+
+        // Cart state
+        let cart = [];
+        let cartVisible = false;
+
+        // DOM elements
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartPanel = document.getElementById('cart-panel');
+        const closeCart = document.getElementById('close-cart');
+        const cartCount = document.getElementById('cart-count');
+        const cartItems = document.getElementById('cart-items');
+        const totalAmount = document.getElementById('total-amount');
+        const sendOrderBtn = document.getElementById('send-order');
+        const customerName = document.getElementById('customer-name');
+        const customerAddress = document.getElementById('customer-address');
+
+        // Add to cart function
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            updateCartDisplay();
+            updateProductDisplays();
+            showCartNotification();
+        }
+
+        // Update product quantity from product cards
+        function updateProductQuantity(name, price, change) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += change;
+                if (existingItem.quantity <= 0) {
+                    removeFromCart(name);
+                    return;
+                }
+            } else if (change > 0) {
+                cart.push({ name, price, quantity: change });
+            }
+            
+            updateCartDisplay();
+            updateProductDisplays();
+        }
+
+        // Update product displays
+        function updateProductDisplays() {
+            const products = ['Yerba Mate 1kg', 'Azúcar 1kg', 'Galletitas Dulces', 'Coca Cola'];
+            
+            products.forEach(productName => {
+                const qtyElement = document.getElementById(`qty-${productName}`);
+                const cartItem = cart.find(item => item.name === productName);
+                if (qtyElement) {
+                    qtyElement.textContent = cartItem ? cartItem.quantity : 0;
+                }
+            });
+        }
+
+        // Remove from cart
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+            updateProductDisplays();
+        }
+
+        // Update quantity
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartDisplay();
+                    updateProductDisplays();
+                }
+            }
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            totalAmount.textContent = `$${total.toLocaleString()}`;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Tu carrito está vacío</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg cart-item-enter">
+                        <div>
+                            <h4 class="font-semibold">${item.name}</h4>
+                            <p class="text-gray-600">$${item.price.toLocaleString()} c/u</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="updateQuantity('${item.name}', -1)" class="bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 transition-colors">-</button>
+                            <span class="font-semibold">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.name}', 1)" class="bg-blue-500 text-white w-8 h-8 rounded-full hover:bg-blue-600 transition-colors">+</button>
+                            <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 ml-2">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            validateOrderForm();
+        }
+
+        // Validate order form
+        function validateOrderForm() {
+            const hasItems = cart.length > 0;
+            const hasName = customerName.value.trim().length > 0;
+            const hasAddress = customerAddress.value.trim().length > 0;
+            
+            sendOrderBtn.disabled = !(hasItems && hasName && hasAddress);
+        }
+
+        // Show cart notification
+        function showCartNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            notification.textContent = '¡Producto agregado al carrito!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
+
+        // Toggle cart visibility
+        function toggleCart() {
+            cartVisible = !cartVisible;
+            cartPanel.classList.toggle('hidden', !cartVisible);
+        }
+
+        // Send order via WhatsApp
+        function sendOrder() {
+            if (cart.length === 0 || !customerName.value.trim() || !customerAddress.value.trim()) return;
+            
+            const config = window.elementSdk?.config || defaultConfig;
+            const whatsappNumber = config.whatsapp_number || defaultConfig.whatsapp_number;
+            
+            let message = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
+            
+            // Customer information
+            message += `*DATOS DEL CLIENTE:*\n`;
+            message += `👤 Nombre: ${customerName.value.trim()}\n`;
+            message += `📍 Dirección: ${customerAddress.value.trim()}\n\n`;
+            
+            // Order details
+            message += `*PEDIDO:*\n`;
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n*TOTAL: $${total.toLocaleString()}*\n\n`;
+            message += `¡Gracias por tu pedido! 😊`;
+            
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // Event listeners
+        cartToggle.addEventListener('click', toggleCart);
+        closeCart.addEventListener('click', toggleCart);
+        sendOrderBtn.addEventListener('click', sendOrder);
+        customerName.addEventListener('input', validateOrderForm);
+        customerAddress.addEventListener('input', validateOrderForm);
+
+        // Element SDK integration
+        async function onConfigChange(config) {
+            const storeTitle = document.getElementById('store-title');
+            storeTitle.textContent = config.store_title || defaultConfig.store_title;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || "#4f46e5",
+                        set: (value) => {
+                            config.primary_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["store_title", config.store_title || defaultConfig.store_title],
+                ["whatsapp_number", config.whatsapp_number || defaultConfig.whatsapp_number]
+            ]);
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ba1e4e7d3499c09',t:'MTc2Nzc3MjU0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
+
+</body></html>
